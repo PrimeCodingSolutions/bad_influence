@@ -2,13 +2,56 @@ import os
 from os import environ
 import dj_database_url
 
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'bad_influence',
+    'otree'
+]
+
+
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+ROOT_URLCONF = 'bad_influence.urls'
+
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'bad_influence/templates')],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+LOGIN_REDIRECT_URL = '/'
+
+LOGIN_URL = '/bad_influence/login/'
+
+STATIC_URL = '/static/'
+
+
+SENTRY_DSN = 'http://2d6137799b914e1693146c5011f39030:46838e8caa374937a91b14b59ebbe164@sentry.otree.org/36'
+
+
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
 # in SESSION_CONFIGS, except those that explicitly override it.
 # the session config can be accessed from methods in your apps as self.session.config,
 # e.g. self.session.config['participation_fee']
-
-SENTRY_DSN = 'http://2d6137799b914e1693146c5011f39030:46838e8caa374937a91b14b59ebbe164@sentry.otree.org/36'
-
 SESSION_CONFIG_DEFAULTS = {
     'real_world_currency_per_point': 0.00,
     'participation_fee': 0.00,
@@ -67,10 +110,6 @@ DEMO_PAGE_INTRO_HTML = """ """
 # don't share this with anybody.
 SECRET_KEY = 'g+h6se573b6wbmxl7v0ejjq1cawe(bvk6+rcga0j4g3=^w%5fu'
 
-# if an app is included in SESSION_CONFIGS, you don't need to list it here
-INSTALLED_APPS = ['otree']
-
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 DATABASES = {
     'default': dj_database_url.config(
