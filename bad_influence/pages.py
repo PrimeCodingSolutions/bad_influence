@@ -6,6 +6,12 @@ from .models import Constants
 from .questions import make_question
 import time
 import numpy as np
+from django.http import HttpResponse
+from django.views.generic import TemplateView
+
+
+class HomePage(TemplateView):
+    template_name = 'bad_influence/HomePage.html'
 
 
 class MyNormalWaitPage(WaitPage):

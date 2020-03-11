@@ -1,17 +1,18 @@
 colors = {
-    "red": "/static/bad_influence/red_peep.png",
-    "blue": "/static/bad_influence/blue_peep.png",
-    "pink": "/static/bad_influence/pink_peep.png",
-    "yellow": "/static/bad_influence/yellow_peep.png",
-    "grey": "/static/bad_influence/grey_peep.png",
-    "green": "/static/bad_influence/green_peep.png",
+    "red": "/static/media/red_peep.png",
+    "blue": "/static/media/blue_peep.png",
+    "pink": "/static/media/pink_peep.png",
+    "yellow": "/static/media/yellow_peep.png",
+    "grey": "/static/media/grey_peep.png",
+    "green": "/static/media/green_peep.png",
 }
 
-color_pairs = [('red','blue'), ('blue','yellow'), ('yellow','red'), ('green','blue'),
-               ('blue','red'), ('yellow','blue'), ('red','yellow'), ('blue','green'),
-               ('red','blue'), ('blue','yellow'), ('yellow','red'), ('green','blue'),
-               ('blue','red'), ('yellow','blue'), ('red','yellow'), ('blue','green')
+color_pairs = [('red', 'blue'), ('blue', 'yellow'), ('yellow', 'red'), ('green', 'blue'),
+               ('blue', 'red'), ('yellow', 'blue'), ('red', 'yellow'), ('blue', 'green'),
+               ('red', 'blue'), ('blue', 'yellow'), ('yellow', 'red'), ('green', 'blue'),
+               ('blue', 'red'), ('yellow', 'blue'), ('red', 'yellow'), ('blue', 'green')
                ]
+
 
 def kontrol(hub, gender, number_of_friends):
     minority_choice = "rød"
@@ -80,8 +81,8 @@ def matematik(hub, gender, number_of_friends):
              "Du får {num} point ekstra hvis dit valg svarer til din præference.")
                 .format(num=number_of_friends),
         'result_page_text':
-             "(I har fået en ny matematiklærer, og han er lidt speciel. " +
-             "I kan vælge at mobbe ham kollektivt eller ikke at mobbe ham.)",
+            "(I har fået en ny matematiklærer, og han er lidt speciel. " +
+            "I kan vælge at mobbe ham kollektivt eller ikke at mobbe ham.)",
         'minority_choice': "mobbe",
         'majority_choice': "ikke mobbe",
         'minority_color_img': colors[color_pairs[2][0]],
@@ -107,7 +108,7 @@ def hpv(hub, gender, number_of_friends):
              "Du får {num} point ekstra hvis dit valg svarer til din præference.")
                 .format(num=number_of_friends),
         'result_page_text':
-             "(Du har fået et tilbud på en gratis vaccination mod hpv.)",
+            "(Du har fået et tilbud på en gratis vaccination mod hpv.)",
         'minority_choice': "vil ikke",
         'majority_choice': "vil gerne",
         'minority_color_img': colors[color_pairs[3][0]],
@@ -133,8 +134,8 @@ def billeddeling(hub, gender, number_of_friends):
              "Du får {num} point ekstra hvis dit valg svarer til din præference.")
                 .format(num=number_of_friends),
         'result_page_text':
-             "(I har fået tilsendt et nøgenbillede af en irriterende pige fra parallelklassen. " +
-             "I kan vælge at dele det med andre i og uden for skolen eller lade være.)",
+            "(I har fået tilsendt et nøgenbillede af en irriterende pige fra parallelklassen. " +
+            "I kan vælge at dele det med andre i og uden for skolen eller lade være.)",
         'minority_choice': "dele",
         'majority_choice': "ikke dele",
         'minority_color_img': colors[color_pairs[4][0]],
@@ -151,7 +152,7 @@ def stikkeri(hub, gender, number_of_friends, city):
     return {
         'title': 'Oscar og William',
         'text':
-             ("Jeres længe ventede studietur til {city} er i fare for at blive aflyst, " +
+            ("Jeres længe ventede studietur til {city} er i fare for at blive aflyst, " +
              "fordi nogle af eleverne har røget hash på skolens område. " +
              "Lærerne har bedt alle i klassen om at angive de personer, der gjorde det. " +
              "Lærerne truer med at aflyse studieturen, hvis ingen siger noget. " +
@@ -165,12 +166,12 @@ def stikkeri(hub, gender, number_of_friends, city):
              "Du får {num} point ekstra hvis dit valg svarer til din præference.")
                 .format(num=number_of_friends),
         'result_page_text':
-             "(Jeres længe ventede studietur til {city} er i fare for at blive aflyst, " +
-             "fordi nogle af eleverne har røget hash på skolens område. " +
-             "Lærerne har bedt alle i klassen om at angive de personer, der gjorde det. " +
-             "Lærerne truer med at aflyse studieturen, hvis ingen siger noget. " +
-             "Alle jer i klassen ved godt, at det var Oscar og William der delte en joint sidste fredag i skolegården. " +
-             "I kan vælge at udlevere deres navne til lærerne eller at holde mund.)".format(city=city),
+            "(Jeres længe ventede studietur til {city} er i fare for at blive aflyst, " +
+            "fordi nogle af eleverne har røget hash på skolens område. " +
+            "Lærerne har bedt alle i klassen om at angive de personer, der gjorde det. " +
+            "Lærerne truer med at aflyse studieturen, hvis ingen siger noget. " +
+            "Alle jer i klassen ved godt, at det var Oscar og William der delte en joint sidste fredag i skolegården. " +
+            "I kan vælge at udlevere deres navne til lærerne eller at holde mund.)".format(city=city),
         'minority_choice': "sig det",
         'majority_choice': "hold mund",
         'minority_color_img': colors[color_pairs[5][0]],
@@ -187,7 +188,7 @@ def alkohol(hub, gender, number_of_friends):
     return {
         'title': 'Sprut',
         'text':
-             ("I skal holde fest på skolen på fredag, " +
+            ("I skal holde fest på skolen på fredag, " +
              "og I skal aftale om I vil smugle sprut med til festen, " +
              "eller om i vil respektere skolens alkoholpolitik og lade være."),
         'preference':
@@ -198,9 +199,9 @@ def alkohol(hub, gender, number_of_friends):
              "Du får {num} point ekstra hvis dit valg svarer til din præference.")
                 .format(num=number_of_friends),
         'result_page_text':
-             "(I skal holde fest på skolen på fredag, " +
-             "og I skal aftale om I vil smugle sprut med til festen, " +
-             "eller om i vil respektere skolens alkoholpolitik og lade være.)",
+            "(I skal holde fest på skolen på fredag, " +
+            "og I skal aftale om I vil smugle sprut med til festen, " +
+            "eller om i vil respektere skolens alkoholpolitik og lade være.)",
         'minority_choice': "smugle",
         'majority_choice': "ikke smugle",
         'minority_color_img': colors[color_pairs[6][0]],
@@ -225,7 +226,7 @@ def klima(hub, gender, number_of_friends):
              "Du får {num} point ekstra hvis dit valg svarer til din præference.")
                 .format(num=number_of_friends),
         'result_page_text':
-             "(Du tror {ikke | } på at klimaforandringerne er menneskeskabte.)",
+            "(Du tror {ikke | } på at klimaforandringerne er menneskeskabte.)",
         'majority_choice': "menneskeskabte",
         'minority_choice': "naturlige",
         'minority_color_img': colors[color_pairs[7][0]],
@@ -245,9 +246,10 @@ def sexchikane(hub, gender, number_of_friends):
     return {
         'title': 'Sexchikane',
         'text':
-             ("Den søde vikar, som altid giver jer lov til at se film i tysktimerne, har lagt an på nogle af {koen} i klassen. " +
-             "I kan vælge at sige det til rektor, men da risikerer I, at vikaren bliver fyret. " +
-             "Eller I kan lade som ingenting med risiko for at vikaren bare forsætter.")
+            (
+                        "Den søde vikar, som altid giver jer lov til at se film i tysktimerne, har lagt an på nogle af {koen} i klassen. " +
+                        "I kan vælge at sige det til rektor, men da risikerer I, at vikaren bliver fyret. " +
+                        "Eller I kan lade som ingenting med risiko for at vikaren bare forsætter.")
                 .format(koen=koen),
         'preference':
             ("Din præference er {prefers}.")
@@ -257,9 +259,9 @@ def sexchikane(hub, gender, number_of_friends):
              "Du får {num} point ekstra hvis dit valg svarer til din præference.")
                 .format(num=number_of_friends),
         'result_page_text':
-             "(Den søde vikar, som altid giver jer lov til at se film i tysktimerne, har lagt an på nogle af {drengene | pigerne} i klassen. " +
-             "I kan vælge at fortælle det til rektor, men da risikerer I, at vikaren bliver fyret. " +
-             "Eller I kan lade som ingenting med risiko for at vikaren forsætter sin adfærd.)",
+            "(Den søde vikar, som altid giver jer lov til at se film i tysktimerne, har lagt an på nogle af {drengene | pigerne} i klassen. " +
+            "I kan vælge at fortælle det til rektor, men da risikerer I, at vikaren bliver fyret. " +
+            "Eller I kan lade som ingenting med risiko for at vikaren forsætter sin adfærd.)",
         'minority_choice': "ignorér",
         'majority_choice': "sig det",
         'minority_color_img': colors[color_pairs[8][0]],
@@ -284,7 +286,7 @@ def moon(hub, gender, number_of_friends):
              "Du får {num} point ekstra hvis dit valg svarer til din præference.")
                 .format(num=number_of_friends),
         'result_page_text':
-             "(Du tror selvfølgelig {ikke | } på at amerikanerne landede på månen.)",
+            "(Du tror selvfølgelig {ikke | } på at amerikanerne landede på månen.)",
         'majority_choice': "tror på det",
         'minority_choice': "tror det ikke",
         'minority_color_img': colors[color_pairs[9][0]],

@@ -1,88 +1,5 @@
-{% load staticfiles otree %}
-<style>
-    .node {
-        stroke: #000;
-        stroke-width: 0px;
-    }
-
-    .node-player {
-        stroke: #000;
-        stroke-width: 3px;
-    }
-
-    .link {
-        stroke: #999;
-        stroke-width: 1.5px;
-    }
-
-    .node-text {
-        font-family: annie_use_your_telescope;
-        font-size: 25px;
-    }
-
-    .ticks {
-        font: annie_use_your_telescope;
-        font: 12px;
-        fill: black;
-    }
-
-    .track,
-    .track-inset,
-    .track-overlay {
-        stroke-linecap: round;
-    }
-
-    .track {
-        stroke: #000;
-        stroke-opacity: 0.3;
-        stroke-width: 10px;
-    }
-
-    .track-inset {
-        stroke: #ddd;
-        stroke-width: 8px;
-    }
-
-    .track-overlay {
-        pointer-events: stroke;
-        stroke-width: 50px;
-        cursor: pointer;
-    }
-
-    .handle {
-        fill: #fff;
-        stroke: #000;
-        stroke-opacity: 0.5;
-        stroke-width: 1.25px;
-    }
-
-    path {
-        stroke: darkgray;
-        stroke-width: 2;
-        fill: none;
-    }
-
-    .axis {
-        shape-rendering: crispEdges;
-    }
-
-    .x.axis line {
-        stroke: lightgrey;
-    }
-
-    .x.axis .minor {
-        stroke-opacity: .5;
-    }
-
-    .x.axis path {
-        display: none;
-    }
-
-    .y.axis line, .y.axis path {
-        fill: none;
-        stroke: #000;
-    }
-</style>
+{% extends 'bad_influence/Base.html' %}
+{% block content %}
 <script src="https://d3js.org/d3.v3.js"></script>
 <script src="http://marvl.infotech.monash.edu/webcola/cola.min.js"></script>
 <script>
@@ -144,16 +61,16 @@
 <script>
     let nodeById = d3.map();
 
-    let red = "{% static "bad_influence/red_peep.png" %}";
-    let blue = "{% static "bad_influence/blue_peep.png" %}";
-    let pink = "{% static "bad_influence/pink_peep.png" %}";
-    let yellow = "{% static "bad_influence/yellow_peep.png" %}";
-    let grey = "{% static "bad_influence/grey_peep.png" %}";
-    let green = "{% static "bad_influence/green_peep.png" %}";
+    let red = "{% static "media/red_peep.png" %}";
+    let blue = "{% static "media/blue_peep.png" %}";
+    let pink = "{% static "media/pink_peep.png" %}";
+    let yellow = "{% static "media/yellow_peep.png" %}";
+    let grey = "{% static "media/grey_peep.png" %}";
+    let green = "{% static "media/green_peep.png" %}";
 
-    let open_eyes = "{% static "bad_influence/open_eyes.png" %}";
-    let closed_eyes = "{% static "bad_influence/closed_eyes.png" %}";
-    let happy_eyes = "{% static "bad_influence/happy_eyes.png" %}";
+    let open_eyes = "{% static "media/open_eyes.png" %}";
+    let closed_eyes = "{% static "media/closed_eyes.png" %}";
+    let happy_eyes = "{% static "media/happy_eyes.png" %}";
 
     let question = undefined;
 
@@ -607,3 +524,4 @@
     };
 </script>
 
+{% endblock %}

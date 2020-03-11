@@ -1,6 +1,12 @@
 import os
 from os import environ
 import dj_database_url
+from django.conf import settings
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+ROOT_URLCONF = 'bad_influence.urls'
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
 # in SESSION_CONFIGS, except those that explicitly override it.
@@ -18,7 +24,7 @@ SESSION_CONFIG_DEFAULTS = {
 SESSION_CONFIGS = [
     {
         'name': 'bad_influence',
-        'display_name': "bad influence",
+        'display_name': "Bad Influence",
         'num_demo_participants': 5,
         'app_sequence': ['bad_influence'],
     },
@@ -36,7 +42,9 @@ POINTS_CUSTOM_NAME = ''
 ROOMS = [
     dict(
         name='BadInfluence',
-        display_name='Bad Influence - test class'
+        display_name='Bad Influence - test class',
+        participant_label_file='bad_influence/login_names.txt',
+
     )
 ]
 
@@ -70,7 +78,20 @@ SECRET_KEY = 'g+h6se573b6wbmxl7v0ejjq1cawe(bvk6+rcga0j4g3=^w%5fu'
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
 INSTALLED_APPS = ['otree']
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'bad_influence/templates')],
+        'APP_DIRS': True,
+    },
+]
+
+
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+STATICFILES_DIRS = (
+    os.path.join(SITE_ROOT, 'bad_influence/static'),
+)
+
 
 DATABASES = {
     'default': dj_database_url.config(
