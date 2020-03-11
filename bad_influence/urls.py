@@ -1,16 +1,11 @@
 from django.urls import path, include
 from bad_influence import pages
-from django.conf.urls import url
-from django.contrib import admin
-from django.contrib.auth import views as auth_views
+from otree.urls import urlpatterns
 
 app_name = "bad_influence"
 
-urlpatterns = [
+## Appending URLs to Otree's custom URLs
 
-    path('home/', pages.HomePage.as_view()),
-
-
-]
-
+urlpatterns.append(path('home/', pages.HomePage.as_view()))
+urlpatterns.append(path('', include('django.contrib.auth.urls')))
 
