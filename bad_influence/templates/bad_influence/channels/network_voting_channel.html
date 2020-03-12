@@ -14,7 +14,7 @@
                 'payload': guess,
                 'subjective_time': timer.innerText
             };
-
+            console.log("clicked")
             if (socket.readyState === WebSocket.OPEN) {
                 socket.send(JSON.stringify(msg));
             }

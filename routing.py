@@ -1,4 +1,4 @@
-from bad_influence.otree_extensions.routing import channel_routing as custom_routes
-from otree.channels.routing import channel_routing
+from bad_influence.otree_extensions.routing import websocket_routes
+from otree.channels.routing import URLRouter
 
-channel_routing += custom_routes
+URLRouter += websocket_routes
