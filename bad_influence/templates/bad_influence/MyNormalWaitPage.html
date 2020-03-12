@@ -1,6 +1,11 @@
 {% extends 'otree/WaitPage.html' %}
 {% load otree %}
-{% block title %}{{ title_text }}{% endblock %}
+
+{% block title %}
+    {{ title_text }}
+{% endblock %}
+
 {% block content %}
-    <p></p>
+    {{ body_text }}
+    <p>Spillet starter når alle spillere er logget ind. </p>
 {% endblock %}

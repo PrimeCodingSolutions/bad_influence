@@ -13,6 +13,10 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 
 
+
+
+
+
 def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -29,7 +33,7 @@ def user_login(request):
             print("They used username: {} and password: {}".format(username, password))
             return HttpResponse("Invalid login details given")
     else:
-        return render(request, 'bad_influence/registration/login.html', {})
+        return render(request, 'bad_influence/templates/registration/login.html', {})
 
 
 class HomePage(TemplateView):
@@ -38,7 +42,7 @@ class HomePage(TemplateView):
 
 class MyNormalWaitPage(WaitPage):
     template_name = 'bad_influence/MyResultsWaitPage.html'
-    title_text = "Vent..."
+    title_text = "Venter på alle spillere..."
 
     def after_all_players_arrive(self):
         group = self.group

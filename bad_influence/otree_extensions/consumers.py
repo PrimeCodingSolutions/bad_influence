@@ -1,6 +1,6 @@
 import networkx as nx
 from networkx.readwrite import json_graph
-from channels.generic.websockets import JsonWebsocketConsumer
+from channels.generic.websocket import JsonWebsocketConsumer
 from bad_influence.models import Player, Group, Constants
 import time
 
