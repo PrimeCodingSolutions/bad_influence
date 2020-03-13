@@ -28,6 +28,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'authentication.middleware.LoginRequiredMiddleware',
 
 ]
 
@@ -50,7 +51,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'authentication.wsgi.application'
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -149,6 +150,6 @@ SECRET_KEY = 'g+h6se573b6wbmxl7v0ejjq1cawe(bvk6+rcga0j4g3=^w%5fu'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='sqlite:///' + os.path.join(BASE_DIR, '../bad_influence/db.sqlite3')
+        default='sqlite:///' + os.path.join(BASE_DIR, '../bad_influence/../bad_influence/../bad_influence/db.sqlite3')
     )
 }
