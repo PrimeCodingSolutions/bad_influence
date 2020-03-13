@@ -10,6 +10,8 @@ import numpy as np
 import random
 from itertools import chain
 from .questions import make_question, question_order
+import logging
+
 
 
 class Constants(BaseConstants):
@@ -262,6 +264,7 @@ class Player(BasePlayer):
         return '{}_{}'.format(self.id_in_group, self.id)
 
     def set_payoffs(self):
+
         all_choices = [p.choice for p in self.group.get_players()]
         self.group.choice = sum(all_choices) > len(all_choices)/2
         if sum(all_choices) > len(all_choices)/2:  # if hubs have gotten the majority
@@ -301,12 +304,22 @@ class Player(BasePlayer):
                 else:
                     lower_id, higher_id = self.id_in_group, friend.id_in_group
                 configs.append({
-                    # make a name for the channel that is the same for all
-                    # channel members. That's why we order it (lower, higher)
+                     # make a name for the channel that is the same for all
+                     # channel members. That's why we order it (lower, higher)
                     'channel': '{}-{}-{}'.format(self.group.id, lower_id, higher_id),
                     'label': 'Chat med {}'.format(friend.chat_nickname())
                 })
         return configs
+
+    def channel(self):
+        friends = self.get_friends()
+        for friend in self.get_others_in_group():
+            if friend.id_in_group in friends:
+                if friend.id_in_group < self.id_in_group:
+                    lower_id, higher_id = friend.id_in_group, self.id_in_group
+                else:
+                    lower_id, higher_id = self.id_in_group, friend.id_in_group
+                return '{}-{}-{}'.format(self.group.id, lower_id, higher_id)
 
     def count_times_has_been_hub(self):
         return sum([p.hub for p in self.in_previous_rounds()])
