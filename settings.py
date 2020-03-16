@@ -20,8 +20,6 @@ INSTALLED_APPS = [
     'otree'
 ]
 
-ROOT_URLCONF = 'bad_influence.urls'
-
 
 TEMPLATES = [
     {
@@ -69,11 +67,8 @@ MEDIA_URL = 'media/'
 
 MEDIA_ROOT = 'bad_influence/static/media'
 
-LOGIN_REDIRECT_URL = '/'
-
-LOGIN_URL = '/login/'
-
 SENTRY_DSN = 'http://2d6137799b914e1693146c5011f39030:46838e8caa374937a91b14b59ebbe164@sentry.otree.org/36'
+
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
 # in SESSION_CONFIGS, except those that explicitly override it.
