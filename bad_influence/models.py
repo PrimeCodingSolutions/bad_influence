@@ -10,8 +10,6 @@ import numpy as np
 import random
 from itertools import chain
 from .questions import make_question, question_order
-import logging
-
 
 
 class Constants(BaseConstants):
