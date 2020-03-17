@@ -1,13 +1,13 @@
 import networkx as nx
 from networkx.readwrite import json_graph
-from channels.generic.websocket import WebsocketConsumer
+from channels.generic.websocket import WebsocketConsumer, JsonWebsocketConsumer
 from bad_influence.models import Player, Group, Constants
 import time
 import json
 from asgiref.sync import async_to_sync
 
 
-class NetworkVoting(WebsocketConsumer):
+class NetworkVoting(JsonWebsocketConsumer):
     # url_pattern = r'^/network_voting/(?P<player_pk>[0-9]+)/(?P<group_pk>[0-9]+)$'
 
     def clean_kwargs(self):
@@ -15,7 +15,7 @@ class NetworkVoting(WebsocketConsumer):
         self.group_pk = self.kwargs['group_pk']
 
     def connect(self, message, **kwargs):
-        # self.clean_kwargs()
+        self.clean_kwargs()
         self.player = self.scope['url_route']['kwargs']['player']
         self.group = self.scope['url_route']['kwargs']['group']
         print('connection from {}:{}'.format(self.group_pk, self.player_pk))
@@ -28,12 +28,12 @@ class NetworkVoting(WebsocketConsumer):
         )
 
     def disconnect(self, message, **kwargs):
-        async_to_sync(self.channel_layer.group_disccard)(
+        self.clean_kwargs()
+        print('disconnect from {}:{}'.format(self.group_pk, self.player_pk))
+        async_to_sync(self.channel_layer.group_discard)(
             self.player,
             self.group
         )
-        # self.clean_kwargs()
-        # print('disconnect from {}:{}'.format(self.group_pk, self.player_pk))
 
     def connection_groups(self, **kwargs):
         group_name = self.get_group().get_channel_group_name()
@@ -49,7 +49,7 @@ class NetworkVoting(WebsocketConsumer):
         return Group.objects.get(pk=self.group_pk)
 
     def receive(self, text=None):
-        # self.clean_kwargs()
+        self.clean_kwargs()
         text_json = json.loads(text)
         message = text_json['message']
         player = self.get_player()
@@ -89,10 +89,6 @@ class NetworkVoting(WebsocketConsumer):
                     'ego_graph': ego_graph,
                     'consensus': consensus
                 })
-
-        self.send(text=json.dumps({
-            'message': message
-        }))
 
 
 class ChatConsumer(WebsocketConsumer):

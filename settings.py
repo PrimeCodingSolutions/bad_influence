@@ -68,7 +68,10 @@ DEMO_PAGE_INTRO_HTML = """ """
 SECRET_KEY = 'g+h6se573b6wbmxl7v0ejjq1cawe(bvk6+rcga0j4g3=^w%5fu'
 
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
-INSTALLED_APPS = ['otree']
+INSTALLED_APPS = [
+    'otree',
+    'bad_influence'
+]
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
