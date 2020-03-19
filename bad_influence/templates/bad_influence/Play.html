@@ -113,7 +113,6 @@
             margin: 2%
         }
 
-        ,
         .text-container {
             display: flex;
             flex-direction: column;
@@ -156,16 +155,20 @@
         </div>
     {% endfor %}
     {% endcomment %}
-    <div class="answer-container">
-        {{ player.channel }}
-        <h4>Chat med dine venner</h4>
-        {% chat nickname=player.chat_nickname %}
-    </div>
-    <style>
-        .otree-chat__input {
-            width: 100%;
-        }
-    </style>
+
+        <div class="answer-container">
+            <h4>Chat med dine venner</h4>
+            {% chat nickname=player.chat_nickname %}
+        </div>
+        <style>
+            .otree-chat__input {
+                width: 100%;
+            }
+        </style>
+        <script>
+            // TODO - Make a script that hides messages from other players
+        </script>
+
 {% endblock %}
 
 

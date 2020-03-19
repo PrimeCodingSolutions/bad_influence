@@ -6,6 +6,6 @@ from django.conf.urls import re_path
 # ]n
 
 websocket_routes = [
-    re_path(r'^ws/network_voting/(?P<player_pk>[0-9]+)/(?P<group_pk>[0-9]+)$', consumers.NetworkVoting),
-    re_path(r'ws/chat(?P<player_name>)', consumers.ChatConsumer)
-]
+            # re_path(r'ws/network_voting/(?P<player_pk>[0-9]+)/(?P<group_pk>[0-9]+)$', consumers.NetworkVoting),
+            re_path(r'ws/chat/(?P<player_pk>[0-9]+)/(?P<group_pk>[0-9]+)$', consumers.ChatConsumer)
+        ]

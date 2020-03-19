@@ -69,7 +69,10 @@ SECRET_KEY = 'g+h6se573b6wbmxl7v0ejjq1cawe(bvk6+rcga0j4g3=^w%5fu'
 
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
 INSTALLED_APPS = [
-    'otree',
+    'otree'
+]
+
+EXTENSION_APPS = [
     'bad_influence'
 ]
 
