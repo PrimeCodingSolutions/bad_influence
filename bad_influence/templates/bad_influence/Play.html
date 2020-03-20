@@ -162,7 +162,10 @@
 {% endblock %}
 
 
+
+
 {% block scripts %}
+
     {% include 'bad_influence/d3/d3_graph.html' %}
     {% include 'bad_influence/channels/network_voting_channel.html' %}
     {% if view.remaining_timeout_seconds != None %}

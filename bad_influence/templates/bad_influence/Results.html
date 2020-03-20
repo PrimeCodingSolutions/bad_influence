@@ -46,9 +46,6 @@
 {% endblock %}
 
 
-{% block scripts %}
-    {% include 'bad_influence/d3/d3_graph_results.html' %}
-{% endblock %}
 
 {% block styles %}
     <style type="text/css">
@@ -58,4 +55,9 @@
             display: block;
         }
     </style>
+{% endblock %}
+{% block scripts %}
+    {% include 'bad_influence/d3/d3_graph_results.html' %}
+
+
 {% endblock %}
