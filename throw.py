@@ -1,3 +1,15 @@
+from sys import path
+
+from django.conf import urls
+from django.contrib import admin
+from otree.urls import get_urlpatterns
+from bad_influence.pages import LoginView, DemoIndex
+from django.contrib.auth import views as auth_views
+
+# urlpatterns.append(path(r"^new/$", DemoIndex.as_view(), name='demo'))
+
+"""
+
 import os
 from os import environ
 import dj_database_url
@@ -75,10 +87,8 @@ SECRET_KEY = 'g+h6se573b6wbmxl7v0ejjq1cawe(bvk6+rcga0j4g3=^w%5fu'
 
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
 
-ROOT_URLCONF = 'otree.urls'
-
 INSTALLED_APPS = [
-    'bad_influence.templates',
+    'bad_influence',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -86,9 +96,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django.contrib.sites',
+    'otree',
 
 
 ]
+
+ROOT_URLCONF = 'otree.urls'
 
 TEMPLATES = [
     {
@@ -120,3 +134,38 @@ DATABASES = {
 #LOGIN_REDIRECT_URL = '/'
 
 #LOGIN_URL = '/login/'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+urlpatterns = [
+    # urls.url(r'^$', RedirectView.as_view(url='/demo', permanent=True)),
+    urls.url(r'^login/$', LoginView.as_view(), name='login'),
+    # urls.url(r'^logout/$', LogoutView.as_view(), name='logout'),
+    urls.url(r'^homepage/$', DemoIndex.as_view(), name='demo'),
+    urls.url(r'^admin/', admin.site.urls),
+]
+
+
+urlpatterns = [
+
+    # urls.url(r'^$', RedirectView.as_view(url='/demo', permanent=True)),
+    # urls.url(r'^login/$', LoginView.as_view(), name='login_custom'),
+    # urls.url(r'^login/$', LogoutView.as_view(), name='logout'),
+    urls.url(r'^', HomePageView.as_view(), name='homepage'),
+    urls.url(r'^accounts/login/$', auth_views.LoginView.as_view(template_name='bad_inf luence/registration/bad_influence/templates/bad_influence/login.html'), name='homepage'),
+    # urls.url(r"^", HomePageView.as_view(), name='homepage'),
+    urls.url(r'^admin/', admin.site.urls),
+]
+"""

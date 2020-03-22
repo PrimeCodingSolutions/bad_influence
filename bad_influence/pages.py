@@ -1,3 +1,7 @@
+import vanilla
+from django.shortcuts import render
+from django.urls import reverse
+
 from ._builtin import Page, WaitPage
 import networkx as nx
 from networkx.readwrite import json_graph
@@ -6,24 +10,23 @@ from .models import Constants
 from .questions import make_question
 import time
 import numpy as np
-
+from django.contrib.auth import views as auth_views
 
 """
 class LoginView(auth_views.LoginView):
-    template_name = 'otree/login.html'
+    template_name = 'bad_influence/registration/login.html'
 
     def get_success_url(self):
-        return reverse('homepage')
+        return reverse('demo')
 
 
-class HomePageView(vanilla.TemplateView):
-    template_name = 'bad_influence/HomePage.html'
+class DemoIndex(vanilla.TemplateView):
+    template_name = 'bad_influence/DemoIndex.html'
 
     def homepage(self):
-        return render(self, 'bad_influence/HomePage.html')
+        return render(self, 'bad_influence/DemoIndex.html')
+
 """
-
-
 class MyNormalWaitPage(WaitPage):
     template_name = 'bad_influence/MyResultsWaitPage.html'
     title_text = "Vent..."
