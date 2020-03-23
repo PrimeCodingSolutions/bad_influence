@@ -10,9 +10,9 @@ from asgiref.sync import async_to_sync
 class NetworkVoting(JsonWebsocketConsumer):
     # url_pattern = r'^/network_voting/(?P<player_pk>[0-9]+)/(?P<group_pk>[0-9]+)$'
 
-    #def clean_kwargs(self, **kwargs):
-    #    self.player_pk = kwargs['player_pk']
-    #    self.group_pk = kwargs['group_pk']
+    def clean_kwargs(self, **kwargs):
+        self.player_pk = kwargs['player_pk']
+        self.group_pk = kwargs['group_pk']
 
     def connect(self):
         self.player_pk = self.scope['url_route']['kwargs']['player_pk']
@@ -25,7 +25,7 @@ class NetworkVoting(JsonWebsocketConsumer):
         )
 
     def disconnect(self, close_code):
-    #    self.clean_kwargs()
+        self.clean_kwargs()
         print('disconnect from {}:{}'.format(self.group_pk, self.player_pk))
         async_to_sync(self.channel_layer.group_discard)(
             self.connection_groups()
@@ -37,15 +37,15 @@ class NetworkVoting(JsonWebsocketConsumer):
         return [group_name, personal_channel]
 
     def get_player(self):
-    #    self.clean_kwargs()
+        self.clean_kwargs()
         return Player.objects.get(pk=self.player_pk)
 
     def get_group(self):
-        # self.clean_kwargs()
+        self.clean_kwargs()
         return Group.objects.get(pk=self.group_pk)
 
     def receive(self, text):
-    #    self.clean_kwargs()
+        self.clean_kwargs()
         text_json = json.loads(text)
         message = text_json['message']
         player = self.get_player()
@@ -86,20 +86,20 @@ class NetworkVoting(JsonWebsocketConsumer):
                     'consensus': consensus
                 })
 
-        #    for p in group.get_players():
-        #        ego_graph = json_graph.node_link_data(nx.ego_graph(graph, p.id_in_group))
-        #        async_to_sync(self.channel_layer.group_send)(
-        #            "chat",
-        #            {
-        #                "type": "chat.message",
-        #                "text": text
-        #            },
-        #            p.get_personal_channel_name(),
-        #            {
-        #                "ego_graph": ego_graph,
-        #                "consensus": consensus
-        #            }
-        #        )
+            for p in group.get_players():
+                ego_graph = json_graph.node_link_data(nx.ego_graph(graph, p.id_in_group))
+                async_to_sync(self.channel_layer.group_send)(
+                    "chat",
+                    {
+                        "type": "chat.message",
+                        "text": text
+                    },
+                    p.get_personal_channel_name(),
+                    {
+                        "ego_graph": ego_graph,
+                        "consensus": consensus
+                    }
+                )
 
 
 class ChatConsumer(AsyncWebsocketConsumer):

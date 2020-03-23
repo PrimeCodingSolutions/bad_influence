@@ -155,20 +155,27 @@
         </div>
     {% endfor %}
     {% endcomment %}
+    <div class="answer-container">
+        <h4>Chat med dine venner</h4>
+        {% chat nickname=player.chat_nickname channel=player.get_channel %}
+    </div>
 
-        <div class="answer-container">
-            <h4>Chat med dine venner</h4>
-            {% chat nickname=player.chat_nickname %}
-        </div>
-        <style>
-            .otree-chat__input {
-                width: 100%;
-            }
-        </style>
-        <script>
-            // TODO - Make a script that hides messages from other players
-        </script>
+    <div>
+            <ul>
+                <li><b>get_friends: </b><p>{{ player.get_friends }}</p></li>
+                <li><b></b><p></p></li>
+            </ul>
+    </div>
 
+    <style>
+        .otree-chat__input {
+            width: 100%;
+        }
+
+        .otree-chat__body {
+            font-weight: bold;
+        }
+    </style>
 {% endblock %}
 
 

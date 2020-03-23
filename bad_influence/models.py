@@ -290,10 +290,6 @@ class Player(BasePlayer):
         E = json.loads(self.ego_network)
         return [i['id'] for i in E['nodes']]
 
-    def get_network(self):
-        friends = self.get_friends()
-        return '-'.join([str(friend) for friend in friends])
-
     def chat_nickname(self):
         return 'Spiller {}'.format(self.id_in_group)
 
@@ -307,16 +303,22 @@ class Player(BasePlayer):
                 else:
                     lower_id, higher_id = self.id_in_group, friend.id_in_group
                 configs.append({
-                     # make a name for the channel that is the same for all
-                     # channel members. That's why we order it (lower, higher)
                     'channel': '{}-{}-{}'.format(self.group.id, lower_id, higher_id),
                     'label': 'Chat med {}'.format(friend.chat_nickname())
+                    # make a name for the channel that is the same for all
+                    # channel members. That's why we order it (lower, higher)
                 })
         return configs
 
     def get_channel(self):
-        channel = "{}_{}".format(self.group.pk, self.get_network())
-        return channel
+        friends = self.get_friends()
+        for friend in self.get_others_in_group():
+            if friend.id_in_group in friends:
+                if friend.id_in_group < self.id_in_group:
+                    lower_id, higher_id = friend.id_in_group, self.id_in_group
+                else:
+                    lower_id, higher_id = self.id_in_group, friend.id_in_group
+                return "{}-{}-{}".format(self.group.id, lower_id, higher_id)
 
     def count_times_has_been_hub(self):
         return sum([p.hub for p in self.in_previous_rounds()])
