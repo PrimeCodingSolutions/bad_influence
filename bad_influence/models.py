@@ -313,7 +313,7 @@ class Player(BasePlayer):
     def get_channel(self):
         friends = self.get_friends()
         for friend in self.get_others_in_group():
-            if friend.id_in_group in friends:
+            if friend.id_in_group in friends and friend.id_in_group in self.subsession.get_players():
                 if friend.id_in_group < self.id_in_group:
                     lower_id, higher_id = friend.id_in_group, self.id_in_group
                 else:

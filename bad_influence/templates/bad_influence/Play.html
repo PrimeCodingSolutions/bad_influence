@@ -155,16 +155,10 @@
         </div>
     {% endfor %}
     {% endcomment %}
+    <p>{{ player.get_others_in_group }}</p>
     <div class="answer-container">
         <h4>Chat med dine venner</h4>
         {% chat nickname=player.chat_nickname channel=player.get_channel %}
-    </div>
-
-    <div>
-            <ul>
-                <li><b>get_friends: </b><p>{{ player.get_friends }}</p></li>
-                <li><b></b><p></p></li>
-            </ul>
     </div>
 
     <style>
